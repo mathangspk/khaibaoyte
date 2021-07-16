@@ -96,7 +96,7 @@ printData();
 
 async function addData(name, address, phone, date, note, row, check) {
     if (check == 0) {
-        const browser = await puppeteer.launch({ headless: false });
+        const browser = await puppeteer.launch({ headless: true });
         try {
             const page = await browser.newPage();
             await page.setViewport({ width: 720, height: 500 })
