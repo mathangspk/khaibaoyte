@@ -5,6 +5,7 @@ const moment = require('moment');
 
 
 const fs = require('fs');
+const { factchecktools } = require('googleapis/build/src/apis/factchecktools');
 const keyFile = path.join(__dirname, 'credentials.json');
 
 async function getDataFromGoogleSheet() {
@@ -86,11 +87,22 @@ async function updateTimeGoogleSheet(row) {
 };
 async function printData() {
     // await getDataFromGoogleSheet();
-    var x = await getDataFromGoogleSheet();
-    for (let i = 0; i < x.length; i++) {
-        await addData(x[i][0], x[i][1], x[i][2], x[i][3], x[i][4], i + 2, x[i][5]);
-        
+    let result = false;
+    let check = true;
+    while (result == false) {
+        var x = await getDataFromGoogleSheet();
+        //console.log(x)
+        for (let i = 0; i < x.length; i++) {
+            check = x[i][5]*check;
+            console.log(check)
+            result = check;
+            await addData(x[i][0], x[i][1], x[i][2], x[i][3], x[i][4], i + 2, x[i][5]);
+        }
+        check = true;
     }
+    // let i = 0;
+    // let check = await addData(x[i][0], x[i][1], x[i][2], x[i][3], x[i][4], i + 2, x[i][5]);
+    // console.log(check)
 }
 printData();
 
@@ -105,17 +117,17 @@ async function addData(name, address, phone, date, note, row, check) {
             await page.waitForTimeout(1000)
             await page.focus("input[jsname=YPqjbf]");
             await page.keyboard.type(name); //type full name
-            console.log('da nhap name')
+            console.log(name)
             await page.waitForTimeout(1000)
             await page.focus("textarea[jsname=YPqjbf]");
             await page.keyboard.type(address); //type address
-            console.log('da nhap address')
+            console.log(address)
             await page.waitForTimeout(1000)
             await page.waitForSelector('input[aria-labelledby=i11]');
 
             await page.focus("input[aria-labelledby=i11]");
             await page.keyboard.type(phone); //type phone number
-            console.log('da nhap phone')
+            console.log(phone)
             await page.waitForTimeout(1000)
             await page.click("label[for=i43]"); // select PVPS Ca Mau
             await page.waitForTimeout(1000)
@@ -126,8 +138,8 @@ async function addData(name, address, phone, date, note, row, check) {
             await page.waitForSelector('div[aria-label="Không có các triệu chứng nêu trên"]');
             await page.click('div[aria-label="Không có các triệu chứng nêu trên"]'); // select khong co cac trieu chung neu tren
             await page.waitForTimeout(1000)
-            //await page.click('div[aria-label="Không có các triệu chứng nêu trên"]'); // select khong co cac trieu chung neu tren
-            //await page.waitForTimeout(1000)
+            // await page.click('div[aria-label="Không có các triệu chứng nêu trên"]'); // select khong co cac trieu chung neu tren
+            // await page.waitForTimeout(1000)
 
             await page.click('div[jsname=OCpkoe')
             console.log('p2')
@@ -194,15 +206,19 @@ async function addData(name, address, phone, date, note, row, check) {
                     await updateTimeGoogleSheet(row);
                     await browser.close();
                     console.log(name);
+                    return true;
                 }
             }
         } catch (e) {
-            console.error(e.message)
+            console.error(e.message);
+            return false;
         } finally {
             await browser.close();
+            return false;
         }
-    } else if (check == 1){
+    } else if (check == 1) {
         console.log("Da khai bao y te")
+        return true;
     }
 };
 
