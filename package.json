@@ -1,0 +1,25 @@
+{
+  "name": "khaibaoyte",
+  "version": "1.0.0",
+  "description": "",
+  "main": "kbyt.js",
+  "dependencies": {
+    "googleapis": "^81.0.0",
+    "moment": "^2.29.1",
+    "puppeteer": "^10.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mathangspk/khaibaoyte.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mathangspk/khaibaoyte/issues"
+  },
+  "homepage": "https://github.com/mathangspk/khaibaoyte#readme"
+}
