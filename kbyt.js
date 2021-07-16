@@ -126,8 +126,8 @@ async function addData(name, address, phone, date, note, row, check) {
             await page.waitForSelector('div[aria-label="Không có các triệu chứng nêu trên"]');
             await page.click('div[aria-label="Không có các triệu chứng nêu trên"]'); // select khong co cac trieu chung neu tren
             await page.waitForTimeout(1000)
-            await page.click('div[aria-label="Không có các triệu chứng nêu trên"]'); // select khong co cac trieu chung neu tren
-            await page.waitForTimeout(1000)
+            //await page.click('div[aria-label="Không có các triệu chứng nêu trên"]'); // select khong co cac trieu chung neu tren
+            //await page.waitForTimeout(1000)
 
             await page.click('div[jsname=OCpkoe')
             console.log('p2')
@@ -166,7 +166,7 @@ async function addData(name, address, phone, date, note, row, check) {
             await page.waitForSelector('input[type=date]');
             await page.waitForTimeout(1000)
             await page.type('input[type=date]', date)
-            
+
             await page.waitForTimeout(1000)
             await page.focus("textarea[jsname=YPqjbf]");
             await page.keyboard.type(note); //type address
