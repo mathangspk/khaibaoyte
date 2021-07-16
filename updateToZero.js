@@ -55,10 +55,19 @@ async function updateDataGoogleSheet(value, row) {
 };
 
 async function printData() {
-    // await getDataFromGoogleSheet();
-    var x = await getDataFromGoogleSheet();
-    for (let i = 0; i < x.length; i++) {
-        await updateDataGoogleSheet(0,i+2);
+ 
+    let result = true;
+    let check = false;
+    while (result == true) {
+        var x = await getDataFromGoogleSheet();
+        for (let i = 0; i < x.length; i++) {
+            check = x[i][5]|check;
+            //console.log(check)
+            result = check;
+            console.log(result)
+            await updateDataGoogleSheet(0,i+2);
+        }
+        check = false;
     }
 }
 printData();
