@@ -94,7 +94,7 @@ async function printData() {
         //console.log(x)
         for (let i = 0; i < x.length; i++) {
             check = x[i][5]*check;
-            console.log(check)
+            //console.log(check)
             result = check;
             await addData(x[i][0], x[i][1], x[i][2], x[i][3], x[i][4], i + 2, x[i][5]);
         }
@@ -205,7 +205,7 @@ async function addData(name, address, phone, date, note, row, check) {
                     await updateDataGoogleSheet(1, row);
                     await updateTimeGoogleSheet(row);
                     await browser.close();
-                    console.log(name);
+                    console.log(name + " đã khai báo y tế thành công");
                     return true;
                 }
             }
@@ -217,7 +217,7 @@ async function addData(name, address, phone, date, note, row, check) {
             return false;
         }
     } else if (check == 1) {
-        console.log("Da khai bao y te")
+        console.log(name + " Đã khai báo y tế")
         return true;
     }
 };
