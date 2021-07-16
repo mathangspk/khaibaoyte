@@ -58,7 +58,7 @@ async function printData() {
     // await getDataFromGoogleSheet();
     var x = await getDataFromGoogleSheet();
     for (let i = 0; i < x.length; i++) {
-        await updateDataGoogleSheet(1,i+2);
+        await updateDataGoogleSheet(0,i+2);
     }
 }
 printData();
