@@ -105,21 +105,24 @@ async function addData(name, address, phone, date, note, row, check) {
             await page.waitForTimeout(1000)
             await page.focus("input[jsname=YPqjbf]");
             await page.keyboard.type(name); //type full name
+            console.log('da nhap name')
             await page.waitForTimeout(1000)
             await page.focus("textarea[jsname=YPqjbf]");
             await page.keyboard.type(address); //type address
+            console.log('da nhap address')
             await page.waitForTimeout(1000)
             await page.waitForSelector('input[aria-labelledby=i11]');
 
             await page.focus("input[aria-labelledby=i11]");
             await page.keyboard.type(phone); //type phone number
+            console.log('da nhap phone')
             await page.waitForTimeout(1000)
             await page.click("label[for=i43]"); // select PVPS Ca Mau
             await page.waitForTimeout(1000)
             await page.click("label[for=i43]"); // select PVPS Ca Mau
             await page.waitForTimeout(1000)
             await page.click("div[role=button]");
-
+            console.log('p1')
             await page.waitForSelector('div[aria-label="Không có các triệu chứng nêu trên"]');
             await page.click('div[aria-label="Không có các triệu chứng nêu trên"]'); // select khong co cac trieu chung neu tren
             await page.waitForTimeout(1000)
@@ -127,7 +130,7 @@ async function addData(name, address, phone, date, note, row, check) {
             await page.waitForTimeout(1000)
 
             await page.click('div[jsname=OCpkoe')
-
+            console.log('p2')
             await page.waitForSelector('label[for=i8]');
             await page.waitForTimeout(1000)
             await page.click('label[for=i8]');
@@ -135,7 +138,7 @@ async function addData(name, address, phone, date, note, row, check) {
             await page.click('label[for=i8]');
             await page.waitForTimeout(1000)
             await page.click('div[jsname=OCpkoe')
-
+            console.log('p3')
             await page.waitForSelector('label[for=i8]');
             await page.waitForTimeout(1000)
             await page.click('label[for=i8]');
@@ -143,7 +146,7 @@ async function addData(name, address, phone, date, note, row, check) {
             await page.click('label[for=i8]');
             await page.waitForTimeout(1000)
             await page.click('div[jsname=OCpkoe')
-
+            console.log('p3')
             await page.waitForSelector('label[for=i8]');
             await page.waitForTimeout(1000)
             await page.click('label[for=i8]');
@@ -151,7 +154,7 @@ async function addData(name, address, phone, date, note, row, check) {
             await page.click('label[for=i8]');
             await page.waitForTimeout(1000)
             await page.click('div[jsname=OCpkoe')
-
+            console.log('p4')
             await page.waitForSelector('label[for=i8]');
             await page.waitForTimeout(1000)
             await page.click('label[for=i8]');
@@ -159,11 +162,11 @@ async function addData(name, address, phone, date, note, row, check) {
             await page.click('label[for=i8]');
             await page.waitForTimeout(1000)
             await page.click('div[jsname=OCpkoe')
-
+            console.log('p5')
             await page.waitForSelector('input[type=date]');
             await page.waitForTimeout(1000)
             await page.type('input[type=date]', date)
-
+            
             await page.waitForTimeout(1000)
             await page.focus("textarea[jsname=YPqjbf]");
             await page.keyboard.type(note); //type address
